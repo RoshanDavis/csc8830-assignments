@@ -315,12 +315,6 @@ def run_measurement(camera_index=None, initial_distance=300.0):
                 # Height label
                 cv2.putText(display, f"{height_mm:.1f}mm", mid_side,
                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
-                
-                # Area
-                area = width_mm * height_mm
-                center = ((p1[0] + p2[0]) // 2, (p1[1] + p2[1]) // 2)
-                cv2.putText(display, f"Area: {area:.1f}mm2", (center[0]-50, center[1]),
-                           cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
             else:
                 # Draw line
                 cv2.line(display, p1, p2, (0, 255, 0), 2)
@@ -363,6 +357,9 @@ def run_measurement(camera_index=None, initial_distance=300.0):
         
         elif key == ord('s'):
             os.makedirs(MEASURE_DATA_DIR, exist_ok=True)
+            # Find next available filename to avoid overwriting
+            while os.path.exists(os.path.join(MEASURE_DATA_DIR, f"measurement_{screenshot_count:03d}.png")):
+                screenshot_count += 1
             filename = os.path.join(MEASURE_DATA_DIR, f"measurement_{screenshot_count:03d}.png")
             cv2.imwrite(filename, display)
             print(f"Saved: {filename}")
