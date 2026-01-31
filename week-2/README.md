@@ -127,6 +127,10 @@ python measure.py
 
 **Output:** Screenshots saved to `measure_data/` folder.
 
+
+### Verification (Step 3)
+
+We measure the actual dimensions of the objects and compare them with the measurements the camera got.
 ---
 
 ## Project Structure
