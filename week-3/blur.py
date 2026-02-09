@@ -225,14 +225,14 @@ def visualize_results(original: np.ndarray,
     diff_amplified = diff * 1000  # Amplify tiny differences for visualization
     diff_amplified = np.clip(diff_amplified, 0, 255)
     axes[1, 1].imshow(diff_amplified, cmap='hot')
-    axes[1, 1].set_title('Difference (amplified 1000x)\n(Should be near-black)')
+    axes[1, 1].set_title('Difference (amplified 1000x)')
     axes[1, 1].axis('off')
     
     # FFT magnitude spectrum of original image
     fft_original = fftshift(fft2(original))
     magnitude_spectrum = np.log1p(np.abs(fft_original))
     axes[1, 2].imshow(magnitude_spectrum, cmap='gray')
-    axes[1, 2].set_title('FFT Magnitude Spectrum\n(log scale)')
+    axes[1, 2].set_title('FFT Magnitude Spectrum')
     axes[1, 2].axis('off')
     
     # Add metrics text
