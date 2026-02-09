@@ -327,10 +327,10 @@ def main():
     )
     parser.add_argument('--image', type=str, default=None,
                         help='Path to input image (uses generated sample if not provided)')
-    parser.add_argument('--sigma', type=float, default=2.0,
-                        help='Gaussian blur sigma (default: 2.0)')
-    parser.add_argument('--kernel-size', type=int, default=11,
-                        help='Kernel size, must be odd (default: 11)')
+    parser.add_argument('--sigma', type=float, default=5.0,
+                        help='Gaussian blur sigma (default: 5.0)')
+    parser.add_argument('--kernel-size', type=int, default=21,
+                        help='Kernel size, must be odd (default: 21)')
     parser.add_argument('--no-display', action='store_true',
                         help='Skip visualization, only print metrics')
     
