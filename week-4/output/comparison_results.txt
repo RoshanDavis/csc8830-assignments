@@ -1,0 +1,44 @@
+SAM2 vs OpenCV Comparison Results
+==================================================
+
+Model: SAM2 tiny
+Images processed: 6
+
+Per-Image Results:
+--------------------------------------------------
+
+IMG_0004 2_jpg.rf.70393df2ea42aae5b9f7ce486efd7048.jpg:
+  IoU: 0.3306
+  Dice: 0.4969
+  Boundary F1: 0.1467
+
+IMG_0004 2_jpg.rf.70393df2ea42aae5b9f7ce486efd7048.jpg:
+  IoU: 0.3306
+  Dice: 0.4969
+  Boundary F1: 0.1467
+
+IMG_0012 3_jpg.rf.111105775c3f68907aae21767c35d634.jpg:
+  IoU: 0.0685
+  Dice: 0.1283
+  Boundary F1: 0.0678
+
+IMG_0012 3_jpg.rf.111105775c3f68907aae21767c35d634.jpg:
+  IoU: 0.0685
+  Dice: 0.1283
+  Boundary F1: 0.0678
+
+IMG_0016 3_jpg.rf.bc87ca013fe52e895cf2b20074742837.jpg:
+  IoU: 0.4713
+  Dice: 0.6407
+  Boundary F1: 0.3746
+
+IMG_0016 3_jpg.rf.bc87ca013fe52e895cf2b20074742837.jpg:
+  IoU: 0.4713
+  Dice: 0.6407
+  Boundary F1: 0.3746
+
+==================================================
+Average Metrics:
+  IoU: 0.2901
+  Dice: 0.4219
+  Boundary F1: 0.1964
