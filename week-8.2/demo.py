@@ -2,12 +2,13 @@ import cv2
 from PIL import Image
 import os
 from google import genai
+from dotenv import load_dotenv
 
 # ==========================================
 # 1. SETUP & CONFIGURATION
 # ==========================================
-# TODO: Paste your free Google AI Studio API key here
-os.environ["GEMINI_API_KEY"] = "AIzaSyBL2TnMaCJ0VcFrNr3C9jikoxl_SLwDNeU" 
+load_dotenv()
+
 VIDEO_FILE = "sample.mp4" # Make sure you have a test video in the folder
 
 # ==========================================
