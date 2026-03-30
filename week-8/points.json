@@ -1,0 +1,47 @@
+[
+    {
+        "type": "table",
+        "pt_left": [880, 3150],
+        "pt_right": [1360, 3155]
+    },
+    {
+        "type": "chair",
+        "pt_left": [720, 3500],
+        "pt_right": [1210, 3505]
+    },
+    {
+        "type": "table",
+        "pt_left": [2560, 3100],
+        "pt_right": [2890, 3110]
+    },
+    {
+        "type": "chair",
+        "pt_left": [2410, 3450],
+        "pt_right": [2750, 3460]
+    },
+    {
+        "type": "table",
+        "pt_left": [1510, 2580],
+        "pt_right": [1660, 2585]
+    },
+    {
+        "type": "chair",
+        "pt_left": [1020, 2250],
+        "pt_right": [1180, 2245]
+    },
+    {
+        "type": "chair",
+        "pt_left": [1480, 2260],
+        "pt_right": [1630, 2255]
+    },
+    {
+        "type": "table",
+        "pt_left": [1230, 1950],
+        "pt_right": [1320, 1945]
+    },
+    {
+        "type": "chair",
+        "pt_left": [1235, 2050],
+        "pt_right": [1325, 2045]
+    }
+]

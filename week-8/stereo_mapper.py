@@ -62,7 +62,7 @@ class StereoMapper:
         
         return (X, Y, Z)
 
-    def gui_loop(self, left_path, right_path):
+    def gui_loop(self, left_path, right_path, points_file="points.json"):
         self.img_left = cv2.imread(left_path)
         self.img_right = cv2.imread(right_path)
         
@@ -86,6 +86,28 @@ class StereoMapper:
             self.cy *= scale_y
             print(f"    New params: fx={self.focal_length_px:.2f}, cx={self.cx:.2f}, cy={self.cy:.2f}")
 
+        # --- AUTO LOAD MULTIPLE POINTS IF EXISTS ---
+        if os.path.exists(points_file):
+            print(f"\n[*] Found {points_file}! Auto-loading points to bypass manual clicking...")
+            with open(points_file, "r") as f:
+                data = json.load(f)
+            
+            for item in data:
+                pt_left = item["pt_left"]
+                pt_right = item["pt_right"]
+                obj_type = item["type"]
+                pt_3d = self.compute_3d_point(pt_left, pt_right)
+                
+                if obj_type == "table":
+                    self.tables.append(pt_3d)
+                else:
+                    self.chairs.append(pt_3d)
+                
+                print(f"Loaded {obj_type} at 3D location (X={pt_3d[0]:.2f}, Y={pt_3d[1]:.2f}, Z={pt_3d[2]:.2f} cm)")
+            
+            self.plot_results()
+            return
+
         print("\n=== Stereo Mapper CLI ===")
         print("Instructions:")
         print("1. We will prompt you to select an object type in the terminal.")
@@ -95,6 +117,7 @@ class StereoMapper:
         print("5. Click on the SAME EXACT POINT on the object in the RIGHT image.")
         print("=========================\n")
         
+        saved_points = []
         while True:
             choice = input("Enter 't' for Table, 'c' for Chair, or 'q' to compute & quit: ").strip().lower()
             
@@ -174,7 +197,20 @@ class StereoMapper:
             else:
                 self.chairs.append(pt_3d)
                 
+            saved_points.append({
+                "type": "table" if choice == 't' else "chair",
+                "pt_left": pt_left,
+                "pt_right": pt_right
+            })
+                
             print(f"Added {obj_type} at 3D location (X={pt_3d[0]:.2f}, Y={pt_3d[1]:.2f}, Z={pt_3d[2]:.2f} cm)")
+            
+        # Save points for future runs
+        if saved_points:
+            with open(points_file, "w") as f:
+                json.dump(saved_points, f, indent=4)
+            print(f"\nSaved {len(saved_points)} points to '{points_file}'!")
+            print("Next time you run this script, it will auto-load these points instead of asking you to click.")
             
         # Plotting
         self.plot_results()
